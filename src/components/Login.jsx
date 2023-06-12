@@ -38,10 +38,12 @@ const Login = () => {
       // cookie is set to the root path 
 
     }
-    //not working-->
-    if (response.status === 401) {
-      alert("Login Failed");
+    else{
+      alert('Login Failed ..please try again later');
+      navigate('/login')
     }
+   
+    
 
   };
 

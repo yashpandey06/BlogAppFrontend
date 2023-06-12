@@ -21,8 +21,11 @@ const Section = () => {
         setData(response.data);
       })
       .catch((err) => {
-        console.log(err);
+       
         alert("Error while fetching your posts....try again later");
+        res.status(500).json({
+          error:err
+        })
       });
   }, []);
 
@@ -52,7 +55,7 @@ const Section = () => {
 
   return (
     <div className="flex flex-col justify-between  py-16 px-8 md:px-12  gap-6 ">
-{console.log(username +'section ke andar vala')}
+
       {data.map((item) => (
         
         <div key={item._id}>

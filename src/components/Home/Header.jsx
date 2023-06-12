@@ -35,7 +35,7 @@ const Header = () => {
 
     return (
         <div className="Home_Header flex flex-row justify-between  py-16 px-8  md:px-12  ">
-            {console.log(username)}
+          
             <div className="flex flex-col gap-8 lg:pl-16 ">
                 <h1 className="text-5xl font-normal " >Stay Bluffing</h1>
                 <p className="text-xl">Discover stories , write stories and take inpiration from others</p>
