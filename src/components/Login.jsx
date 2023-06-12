@@ -37,11 +37,10 @@ const Login = () => {
       Cookies.set('token', token, { expires: 1, path: '/' });
       // cookie is set to the root path 
 
+    }else{
+      alert(response.message);
     }
-    else{
-      alert('Login Failed ..please try again later');
-      navigate('/login')
-    }
+    
    
     
 
