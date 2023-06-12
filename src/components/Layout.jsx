@@ -2,9 +2,8 @@ import { Outlet } from "react-router-dom"
 import Navbar from "./Navbar"
 import axios from 'axios';
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie"
 const Layout = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
 
 
   useEffect(() => {
@@ -13,7 +12,7 @@ const Layout = () => {
     })
       .then((response) => {
         
-        if (Cookies.get('token')) {
+        if (response.get.username) {
           setUsername(response.data.username)
         }
         else{

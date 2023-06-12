@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom';
 import BlurOnOutlinedIcon from '@mui/icons-material/BlurOnOutlined';
+import { useState } from 'react';
 
-const Navbar = ({ username }) => {
+// eslint-disable-next-line react/prop-types
+const Navbar = ({username}) => {
+  const[user,setUser]=useState("");
+  console.log("navbar-->"+ username)
+  setUser(username);
   const deleteCookie = (name) => {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
 
   const handleLogout = () => {
     deleteCookie('token');
+    setUser("");
     window.location.reload();
+
   };
 
   return (
@@ -20,7 +27,7 @@ const Navbar = ({ username }) => {
         <span className="text-black text-3xl font-bold font-signature">Bluff</span>
       </Link>
 
-      {username ? (
+      {user ? (
         <div className="flex items-center gap-4 text-md">
           <button>{username}</button>
           <button className="bg-black rounded-xl p-2 text-white" onClick={handleLogout}>
