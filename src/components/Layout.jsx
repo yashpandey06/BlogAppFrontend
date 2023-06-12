@@ -17,7 +17,8 @@ const Layout = () => {
     })
       .then((response) => {
         
-        if (response.get.username) {
+        if (response.data.username) {
+          console.log(response.data.username)
           setUsername(response.data.username)
         }
         else{
