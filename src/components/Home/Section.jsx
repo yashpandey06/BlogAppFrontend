@@ -11,7 +11,7 @@ const Section = () => {
     const token = Cookies.get("token");
 
     axios
-      .get("http://localhost:8080/upload", {
+      .get("https://blogapp-em6i.onrender.com/upload", {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
@@ -29,7 +29,7 @@ const Section = () => {
   useEffect(() => {
     const token = Cookies.get("token");
     axios
-      .get("http://localhost:8080/user", {
+      .get("https://blogapp-em6i.onrender.com/user", {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },

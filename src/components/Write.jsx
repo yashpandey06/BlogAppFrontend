@@ -38,7 +38,7 @@ const Write = () => {
     formData.append("file", file);
    
 
-    fetch('http://localhost:8080/upload', {
+    fetch('https://blogapp-em6i.onrender.com/upload', {
       method: 'POST',
       // Include the file and other data in the request body
       body: formData,
@@ -69,7 +69,7 @@ const Write = () => {
         <h1 className="text-3xl font-bold mb-4 font-signature text-center ">
           Create Post
         </h1>
-        <form action="http://localhost:8080/profile" encType="multipart/form-data" onSubmit={handleSubmit} className="space-y-4" >
+        <form action="https://blogapp-em6i.onrender.com/profile" encType="multipart/form-data" onSubmit={handleSubmit} className="space-y-4" >
           <label htmlFor="title" className="font-bold text-lg font-normal">
             TITLE:
           </label>

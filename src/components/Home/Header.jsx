@@ -11,7 +11,7 @@ const Header = () => {
     const [username, setUsername] = useState('');
     useEffect(() => {
         const token = Cookies.get('token');
-        axios.get('http://localhost:8080/auth', {
+        axios.get('https://blogapp-em6i.onrender.com/auth', {
             withCredentials: true,
             headers: {
                 Authorization: `Bearer ${token}`

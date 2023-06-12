@@ -8,7 +8,7 @@ const Layout = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/auth', {
+    axios.get('https://blogapp-em6i.onrender.com/auth', {
       withCredentials: true,
     })
       .then((response) => {

@@ -23,7 +23,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await axios.post("http://localhost:8080/login", {
+    const response = await axios.post("https://blogapp-em6i.onrender.com/login", {
       username,
       password
     })
