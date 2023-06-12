@@ -37,8 +37,11 @@ const Login = () => {
       Cookies.set('token', token, { expires: 1, path: '/' });
       // cookie is set to the root path 
 
-    }else{
-      alert(response.message);
+    }else if(response.status===401){
+      alert("Credentials incorrect");
+    }
+    else{
+      alert("Server down")
     }
     
    
