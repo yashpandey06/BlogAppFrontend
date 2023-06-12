@@ -41,7 +41,7 @@ const Section = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [username]);
   const renderImage = (item) => {
     if (item.picture) {
       return `data:image/png;base64,${item.picture}`;
