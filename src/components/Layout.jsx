@@ -17,7 +17,7 @@ const Layout = () => {
           setUsername(response.data.username)
         }
         else{
-          setUsername("");
+          setUsername(" ");
           
         }
       })

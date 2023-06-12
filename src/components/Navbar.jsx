@@ -5,6 +5,7 @@ import BlurOnOutlinedIcon from '@mui/icons-material/BlurOnOutlined';
 
 // eslint-disable-next-line react/prop-types
 const Navbar = ({ username }) => {
+  console.log("navbar +" ,username)
   const deleteCookie = (name) => {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
