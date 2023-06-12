@@ -27,7 +27,7 @@ const Layout = () => {
   }, []);
   return (
     <div>
-      {username && <Navbar username={username} />}
+      <Navbar username={username} />
       <Outlet />
     </div>
   )
