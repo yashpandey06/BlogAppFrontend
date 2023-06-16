@@ -58,7 +58,7 @@ const Section = () => {
     if (item.picture) {
       return `data:image/png;base64,${item.picture}`;
     } else {
-      return null; // Return null or a placeholder image URL for invalid data
+      return null; 
     }
   };
 

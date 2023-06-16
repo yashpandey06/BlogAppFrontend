@@ -39,6 +39,7 @@ const Header = () => {
             <div className="flex flex-col gap-8 lg:pl-16 ">
                 <h1 className="text-5xl font-normal " >Stay Bluffing</h1>
                 <p className="text-xl">Discover stories , write stories and take inpiration from others</p>
+                <p className="text-xl">Keep you stories a secret</p>
                 <div>
                     {username ? <Link to="/write" className=' text-xl   bg-black text-white rounded-md px-4 py-1 '>
                         Create Post
