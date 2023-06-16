@@ -45,6 +45,15 @@ const Section = () => {
         console.log(err);
       });
   }, []);
+  useEffect(()=>{
+    axios.get('https://blogapp-em6i.onrender.com/render')
+    .then((response)=>{
+      console.log(response);
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  },[])
   const renderImage = (item) => {
     if (item.picture) {
       return `data:image/png;base64,${item.picture}`;
