@@ -9,21 +9,21 @@ const Layout = () => {
 
   useEffect(() => {
     const token = Cookies.get('token');
-    axios.get('https://blogapp-em6i.onrender.com/auth', {
+    axios.get('http://localhost:8080/auth', {
       withCredentials: true,
       headers: {
         Authorization: `Bearer ${token}`, // Include the token in the Authorization header
       },
     })
       .then((response) => {
-        
+
         if (response.data.username) {
           console.log(response.data.username)
           setUsername(response.data.username)
         }
-        else{
+        else {
           setUsername(" ");
-          
+
         }
       })
       .catch((error) => {

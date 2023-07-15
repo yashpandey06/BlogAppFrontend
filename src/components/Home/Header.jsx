@@ -3,15 +3,16 @@ import { Link } from "react-router-dom"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-// http://localhost:8080/auth
-
+// 
+// https://blogapp-em6i.onrender.com
 
 const Header = () => {
-   
+
     const [username, setUsername] = useState('');
+
     useEffect(() => {
         const token = Cookies.get('token');
-        axios.get('https://blogapp-em6i.onrender.com/auth', {
+        axios.get('http://localhost:8080/auth', {
             withCredentials: true,
             headers: {
                 Authorization: `Bearer ${token}`
@@ -20,7 +21,7 @@ const Header = () => {
             .then((response) => {
 
                 if (Cookies.get('token')) {
-                    
+
                     setUsername(response.data.username)
                 }
                 else {
@@ -32,10 +33,11 @@ const Header = () => {
                 console.log(error);
             });
     }, []);
+    console.log(username);
 
     return (
         <div className="Home_Header flex flex-row justify-between  py-16 px-8  md:px-12  ">
-          
+
             <div className="flex flex-col gap-8 lg:pl-16 ">
                 <h1 className="text-5xl font-normal " >Stay Bluffing</h1>
                 <p className="text-xl">Discover stories , write stories and take inpiration from others</p>

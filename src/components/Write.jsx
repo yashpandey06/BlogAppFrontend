@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 
 const Write = () => {
   const token = Cookies.get('token')
-  console.log(token)
+
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
@@ -36,16 +36,16 @@ const Write = () => {
     formData.append("summary", summary);
     formData.append("content", content);
     formData.append("file", file);
-   
 
-    fetch('https://blogapp-em6i.onrender.com/upload', {
+
+    fetch('http://localhost:8080/upload', {
       method: 'POST',
       // Include the file and other data in the request body
       body: formData,
       withCredentials: true,
       headers: {
-          Authorization: `Bearer ${token}`
-        }
+        Authorization: `Bearer ${token}`
+      }
 
     })
       .then((response) => {
@@ -69,7 +69,7 @@ const Write = () => {
         <h1 className="text-3xl font-bold mb-4 font-signature text-center ">
           Create Post
         </h1>
-        <form action="https://blogapp-em6i.onrender.com/profile" encType="multipart/form-data" onSubmit={handleSubmit} className="space-y-4" >
+        <form action="http://localhost:8080/profile" encType="multipart/form-data" onSubmit={handleSubmit} className="space-y-4" >
           <label htmlFor="title" className="font-bold text-lg font-normal">
             TITLE:
           </label>

@@ -23,7 +23,7 @@ const Navbar = ({ username }) => {
       </Link>
       {username ?
         <div className="flex items-center gap-4 text-md  ">
-          <button>{username}</button>
+          <button className='underline capitalize'>{username}</button>
           <button className=' bg-black rounded-xl  p-2 text-white' onClick={Logout}>logout</button>
         </div>
         : <Link to="/login" className=' md:flex bg-black rounded-xl  p-2 text-white'>

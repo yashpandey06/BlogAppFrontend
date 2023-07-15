@@ -23,7 +23,7 @@ const Register = () => {
       alert('Please enter username of minimum length 6')
       window.location.reload();
     }
-    const response = await axios.post("https://blogapp-em6i.onrender.com/register", {
+    const response = await axios.post("http://localhost:8080/register", {
       username,
       password,
     });
