@@ -11,9 +11,11 @@ const Section = () => {
   const [username, setUsername] = useState("");
 
   useEffect(() => {
+    const url =
+      "https://blogappbackened.onrender.com/key" || "http://localhost:8080/key";
     if (!username) {
       axios
-        .get("http://localhost:8080/key")
+        .get(url)
         .then((response) => {
           setVacData(response.data);
         })
@@ -25,9 +27,11 @@ const Section = () => {
 
   useEffect(() => {
     const token = Cookies.get("token");
-
+    const url =
+      "https://blogappbackened.onrender.com/upload" ||
+      "http://localhost:8080/upload";
     axios
-      .get("http://localhost:8080/upload", {
+      .get(url, {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
@@ -44,9 +48,11 @@ const Section = () => {
 
   useEffect(() => {
     const token = Cookies.get("token");
-
+    const url =
+      "https://blogappbackened.onrender.com/user" ||
+      "http://localhost:8080/user";
     axios
-      .get("http://localhost:8080/user", {
+      .get(url, {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
@@ -99,9 +105,7 @@ const Section = () => {
         <div>
           <div>Dummy data</div>
           {vacData.map((item) => (
-
             <div key={item._id}>
-            
               <Link className="flex justify-around items-center md:p-2 mb-3 shadow-md rounded-lg duration-150 shadow-slate-500 my-9">
                 <div className="flex flex-col w-full md:w-3/5 gap-4 p-4">
                   <div className="flex flex-row justify-between items-center">
@@ -133,7 +137,6 @@ const Section = () => {
               </Link>
             </div>
           ))}
-         
         </div>
       )}
     </div>

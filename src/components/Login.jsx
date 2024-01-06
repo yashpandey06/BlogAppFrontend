@@ -23,8 +23,10 @@ const Login = () => {
     event.preventDefault();
     username.trim();
     password.trim();
-
-    const response = await axios.post("http://localhost:8080/login", {
+    const url =
+      "https://blogappbackened.onrender.com/login" ||
+      "http://localhost:8080/login";
+    const response = await axios.post(url, {
       username,
       password,
     });

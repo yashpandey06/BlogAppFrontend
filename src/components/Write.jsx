@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Write = () => {
-  const token = Cookies.get('token')
+  const token = Cookies.get("token");
 
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState("");
   const navigate = useNavigate();
 
   function handleTitleChange(e) {
@@ -25,42 +25,40 @@ const Write = () => {
   function handlePictureChange(e) {
     const file = e.target.files[0];
     setFile(file);
-
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(file)
+    console.log(file);
     const formData = new FormData();
     formData.append("title", title);
     formData.append("summary", summary);
     formData.append("content", content);
     formData.append("file", file);
 
-    
-    fetch('http://localhost:8080/upload', {
-      method: 'POST',
+    const url =
+      "https://blogappbackened.onrender.com/upload" ||
+      "http://localhost:8080/upload";
+    fetch(url, {
+      method: "POST",
       body: formData,
       withCredentials: true,
       headers: {
-        Authorization: `Bearer ${token}`
-      }
-
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((response) => {
         if (response.status === 201) {
-
           console.log("Successfully posted");
-          navigate('/')
+          navigate("/");
         } else {
           console.log("Error sending the data");
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
-
 
   return (
     <div className=" write min-h-screen font-normal    flex justify-center items-center py-8  ">
@@ -68,7 +66,12 @@ const Write = () => {
         <h1 className="text-3xl font-bold mb-4 font-signature text-center ">
           Create Post
         </h1>
-        <form action="http://localhost:8080/profile" encType="multipart/form-data" onSubmit={handleSubmit} className="space-y-4" >
+        <form
+          action="https://blogappbackened.onrender.com/profile"
+          encType="multipart/form-data"
+          onSubmit={handleSubmit}
+          className="space-y-4"
+        >
           <label htmlFor="title" className="font-bold text-lg font-normal">
             TITLE:
           </label>
