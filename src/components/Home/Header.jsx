@@ -12,8 +12,8 @@ const Header = () => {
 
     useEffect(() => {
         const token = Cookies.get('token');
+        console.log(token)
         axios.get('http://localhost:8080/auth', {
-            withCredentials: true,
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -21,7 +21,6 @@ const Header = () => {
             .then((response) => {
 
                 if (Cookies.get('token')) {
-
                     setUsername(response.data.username)
                 }
                 else {
@@ -33,7 +32,7 @@ const Header = () => {
                 console.log(error);
             });
     }, []);
-    console.log(username);
+
 
     return (
         <div className="Home_Header flex flex-row justify-between  py-16 px-8  md:px-12  ">

@@ -1,19 +1,18 @@
-
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [username, setUsername] = useState(" ");
@@ -22,37 +21,33 @@ const Login = () => {
   // Define handleSubmit function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
+    username.trim();
+    password.trim();
 
     const response = await axios.post("http://localhost:8080/login", {
       username,
-      password
-    })
+      password,
+    });
     if (response.status === 200) {
       // Retrieve the token from the response
-      navigate('/');
+      navigate("/");
       window.location.reload();
       const token = response.data.token;
 
-
-      Cookies.set('token', token, { expires: 1, path: '/' });
-      // cookie is set to the root path 
-
+      Cookies.set("token", token, { expires: 1, path: "/" });
+      // cookie is set to the root path
     }
-
-
-
   };
-
 
   function Copyright() {
     return (
       <Typography variant="body2" color="text.secondary" align="center">
-        {'Copyright © '}
+        {"Copyright © "}
         <Link color="inherit" href="https://mui.com/">
           Your Website
-        </Link>{' '}
+        </Link>{" "}
         {new Date().getFullYear()}
-        {'.'}
+        {"."}
       </Typography>
     );
   }
@@ -113,7 +108,6 @@ const Login = () => {
                 autoComplete="name"
                 onChange={(e) => {
                   setUsername(e.target.value);
-                  console.log(e.target.value);
                 }}
               />
               <TextField

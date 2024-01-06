@@ -9,27 +9,26 @@ const Layout = () => {
 
   useEffect(() => {
     const token = Cookies.get('token');
+    console.log(token)
     axios.get('http://localhost:8080/auth', {
-      withCredentials: true,
-      headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
-      },
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
     })
-      .then((response) => {
+        .then((response) => {
 
-        if (response.data.username) {
-          console.log(response.data.username)
-          setUsername(response.data.username)
-        }
-        else {
-          setUsername(" ");
+            if (Cookies.get('token')) {
+                setUsername(response.data.username)
+            }
+            else {
+                setUsername("");
 
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}, []);
   return (
     <div>
       <Navbar username={username} />

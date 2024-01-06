@@ -19,25 +19,25 @@ const Register = () => {
   // Defined handleSubmit function to handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
+    username.trim();
+    password.trim();
     if (username.length < 6) {
-      alert('Please enter username of minimum length 6')
+      alert("Please enter username of minimum length 6");
       window.location.reload();
     }
     const response = await axios.post("http://localhost:8080/register", {
       username,
       password,
     });
-
+   
     if (response.status === 201) {
       alert("Registration successfull");
-      navigate('/login');
-    }
-    else {
-      alert("Registration Failed !!, Try again later.")
-      navigate('/register');
+      navigate("/login");
+    } else {
+      alert("Registration Failed !!, Try again later.");
+      navigate("/register");
     }
   };
-
 
   function Copyright() {
     return (
@@ -108,7 +108,6 @@ const Register = () => {
                 autoComplete="name"
                 onChange={(e) => {
                   setUsername(e.target.value);
-                  console.log(e.target.value);
                 }}
               />
               <TextField

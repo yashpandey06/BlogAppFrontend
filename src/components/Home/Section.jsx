@@ -12,8 +12,8 @@ const Section = () => {
 
   useEffect(() => {
     if (!username) {
-      console.log(true);
-      axios.get('http://localhost:8080/key')
+      axios
+        .get("http://localhost:8080/key")
         .then((response) => {
           setVacData(response.data);
         })
@@ -21,7 +21,6 @@ const Section = () => {
           console.log(err);
         });
     }
-
   }, [username]);
 
   useEffect(() => {
@@ -41,7 +40,6 @@ const Section = () => {
         alert("Please Login or Register");
         console.log(err);
       });
-
   }, []);
 
   useEffect(() => {
@@ -59,7 +57,6 @@ const Section = () => {
       .catch((err) => {
         console.log(err);
       });
-
   }, []);
 
   const renderImage = (item) => {
@@ -72,48 +69,52 @@ const Section = () => {
 
   return (
     <div className="flex flex-col justify-between py-16 px-8 md:px-12 gap-6">
-      {username ? <div>
-        {data.map((item) => (
-          <div key={item._id}>
-            <Link className="flex justify-around items-center md:p-2 mb-3 shadow-md rounded-lg duration-150 shadow-slate-500  my-9">
-              <div className="flex flex-col w-full md:w-3/5 gap-4 p-4">
-                <div className="flex flex-row justify-between items-center">
-                  <div className="flex flex-col gap-4">
-                    <h1 className="font-bold font-signature text-xl">{item.title}</h1>
-                    <h3 className="">{item.summary}</h3>
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <div>
-                      <span className="font-bold">author: </span> {username}
-                    </div>
-                    <div></div>
-                  </div>
-                </div>
-                <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
-              </div>
-              <div className="">
-                {item.picture && (
-                  <img className="rounded-md pr-2" src={renderImage(item)} alt="" />
-                )}
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div> :
+      {username ? (
         <div>
-
-          {vacData.map((item) => (
+          {data.map((item) => (
             <div key={item._id}>
+              <Link className="flex justify-around items-center md:p-2 mb-3 shadow-md rounded-lg duration-150 shadow-slate-500  my-9">
+                <div className="flex flex-col w-full md:w-3/5 gap-4 p-4">
+                  <div className="flex flex-row justify-between items-center">
+                    <div className="flex flex-col gap-4">
+                      <h1 className="font-bold font-signature text-xl">
+                        Title : {item.title}
+                      </h1>
+                      <h3 className="">Summary : {item.summary}</h3>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      <div>
+                        <span className="font-bold">author: </span> {username}
+                      </div>
+                      <div></div>
+                    </div>
+                  </div>
+                  <div dangerouslySetInnerHTML={{ __html: item.content }}></div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <div>Dummy data</div>
+          {vacData.map((item) => (
+
+            <div key={item._id}>
+            
               <Link className="flex justify-around items-center md:p-2 mb-3 shadow-md rounded-lg duration-150 shadow-slate-500 my-9">
                 <div className="flex flex-col w-full md:w-3/5 gap-4 p-4">
                   <div className="flex flex-row justify-between items-center">
                     <div className="flex flex-col gap-4">
-                      <h1 className="font-bold font-signature text-xl">{item.title}</h1>
+                      <h1 className="font-bold font-signature text-xl">
+                        {item.title}
+                      </h1>
                       <h3 className="">{item.summary}</h3>
                     </div>
                     <div className="flex flex-col gap-4">
                       <div>
-                        <span className="font-bold">author: Gigachad </span> {username}
+                        <span className="font-bold">author: Gigachad </span>{" "}
+                        {username}
                       </div>
                       <div></div>
                     </div>
@@ -122,18 +123,19 @@ const Section = () => {
                 </div>
                 <div className="">
                   {item.picture && (
-                    <img className="rounded-md pr-2" src={renderImage(item)} alt="" />
+                    <img
+                      className="rounded-md pr-2"
+                      src={renderImage(item)}
+                      alt=""
+                    />
                   )}
                 </div>
               </Link>
             </div>
           ))}
-          {console.log(vacData)}
+         
         </div>
-      }
-
-
-
+      )}
     </div>
   );
 };

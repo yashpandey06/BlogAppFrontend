@@ -37,10 +37,9 @@ const Write = () => {
     formData.append("content", content);
     formData.append("file", file);
 
-
+    
     fetch('http://localhost:8080/upload', {
       method: 'POST',
-      // Include the file and other data in the request body
       body: formData,
       withCredentials: true,
       headers: {
